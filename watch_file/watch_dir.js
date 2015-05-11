@@ -24,4 +24,4 @@ var watchDir = './watch',
     processedDir = './done';
 var watcher = new Watcher(watchDir,processedDir);
 watcher.watch();
-console.log('start!');
+console.log('start!!!');
