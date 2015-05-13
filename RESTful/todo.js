@@ -15,6 +15,7 @@ function setHeaders(res) {
 http.createServer(function (req, res) {
     setHeaders(res);
     req.setEncoding('utf8');
+    console.log(req.method);
     switch(req.method){
         case 'POST':
             var str = '';
@@ -38,5 +39,30 @@ http.createServer(function (req, res) {
             res.setHeader('Content-Length',Buffer.byteLength(jsonStr));
             res.setHeader('content-type', 'text/plain;chaset="utf-8"');
             res.end(jsonStr);
+            break;
+        case 'OPTIONS':
+            res.end('ok');
+            break;
+        case "DELETE":
+            var str = '';
+            req.on('data', function (data) {
+                str += data;
+            });
+            req.on('end', function () {
+                var index = parseInt(str);
+                todoList.splice(index, 1);
+            });
+            res.end('deleted');
+            break;
+        case 'PUT':
+            var str = '';
+            req.on('data', function (data) {
+                str += data;
+            });
+            req.on('end', function () {
+                var jsonO = query.parse(str);
+                todoList[parseInt(jsonO.index)] = jsonO.value;
+            });
+            res.end('putted');
     }
 }).listen(3000);

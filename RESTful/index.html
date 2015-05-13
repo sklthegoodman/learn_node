@@ -14,9 +14,15 @@
     <button id="getBtn">View All Event</button>
 </div>
 <div class="showList">
-    <ul class="list" id="list"></ul>
+    <ul class="list" id="list">
+    </ul>
 </div>
-<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script id="template" type="text/x-handlebars-template">
+    <li>%<button class="deleteBtn" title="index">Delete</button>
+        <input type="text" class="editValue"><button class="editBtn" title="index">Edit</button>
+    </li>
+</script>
+<script src="jquery-2.1.4.js"></script>
 <script src="index.js"></script>
 </body>
 </html>
