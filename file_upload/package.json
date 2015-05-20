@@ -1,0 +1,8 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "description": "file unpload",
+  "dependencies": {
+    "formidable": "~1.0.17"
+  }
+}
